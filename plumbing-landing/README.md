@@ -1,29 +1,44 @@
-# Booking Flow Demo — Web app sample (portfolio demo)
+# FlowRight Plumbing — Landing Page (portfolio demo)
 
-A complete multi-step booking flow in a single self-contained `index.html` — the kind of widget a service business (plumber, salon, repair shop) embeds on their site to take appointments without phone tag.
+A complete, mobile-responsive small-business landing page built as a single self-contained `index.html` (no build step, no dependencies, no frameworks).
 
-## The flow
+## What's inside
 
-1. **Details** — name, phone (validated), service picker
-2. **Pick a time** — 7-day picker (skips Sundays) + time-slot grid with "full"/"open" states
-3. **Review** — summary of everything before committing, optional notes field
-4. **Confirmation** — booking reference number, recap, "book another" reset
+| Section | Detail |
+|---|---|
+| Sticky header | Logo, nav links, CTA button, mobile hamburger menu |
+| Hero | Headline, subhead, dual CTA, trust badges |
+| Emergency strip | 24/7 banner with tap-to-call |
+| Services grid | 6 services with "from" pricing, hover effects |
+| How-it-works | 3-step process cards |
+| Reviews | Testimonial cards with star ratings |
+| Quote form | Validated lead-capture form with inline error/success states |
+| FAQ | Accessible accordion |
+| Footer | Contact, service area, license info |
+| Floating call button | Sticky tap-to-call on mobile |
 
 ## Techniques demonstrated
 
-- **Multi-step state machine** — a single `state` object carried across panes; back-buttons never lose data
-- **Client-side validation** — inline errors on name/phone, slot selection enforced before review
-- **Deterministic demo data** — "full" slots derived from the date so the demo is stable (not random each load)
-- **XSS-safe rendering** — user input escaped before being injected into the summary
-- **localStorage persistence** — last booking saved locally (shows awareness of real-world needs)
-- **Simulated async submit** — loading state on the confirm button, then a confirmation screen (in production: swap the `setTimeout` for a `fetch()` to any booking API)
+- **Pure HTML/CSS/JS** — zero dependencies, loads instantly, works anywhere
+- **Mobile-first responsive** — hamburger nav, stacking grids, tap-friendly targets
+- **Form validation** — required-field + phone-format checks in vanilla JS
+- **SEO basics** — semantic markup, meta description, descriptive headings
+- **Conversion patterns** — sticky CTA, social proof placement, urgency strip, single clear ask per section
 
 ## To preview
 
-Open `index.html` in any browser — no server, no build, no dependencies.
+Just open `index.html` in any browser — or serve it:
 
-## For clients
+```bash
+cd plumbing-landing
+python3 -m http.server 8000
+# → http://localhost:8000
+```
 
-This is the front-end half of a real booking system. The back-end half (slot availability API, SMS confirmations, calendar sync, no-show reminders) is a natural fixed-price follow-on project — which is exactly how small demo builds turn into bigger contracts.
+## Customization notes (for clients)
 
-*Fictional business, fictional data — built as a portfolio sample.*
+- Phone number, license #, service area, and pricing are placeholder content — swap in real details
+- Colors live in `:root` CSS variables — rebrand in under 5 minutes
+- The quote form currently validates client-side only; wire the `submit` handler to any endpoint (Formspree, Netlify Forms, or a backend API)
+
+*All business details on this page are fictional — built as a portfolio sample.*
